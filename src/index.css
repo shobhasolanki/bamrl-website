@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2.7%;
+    --foreground: 210 6% 78%;
+
+    --card: 0 0% 6.7%;
+    --card-foreground: 210 6% 78%;
+
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 210 6% 78%;
+
+    --primary: 220 100% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 6.7%;
+    --secondary-foreground: 210 6% 78%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 210 4% 46%;
+
+    --accent: 187 100% 50%;
+    --accent-foreground: 0 0% 2.7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 220 100% 56%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 210 6% 78%;
+    --sidebar-primary: 220 100% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 210 6% 78%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 220 100% 56%;
+
+    /* Custom tokens */
+    --cyan: 187 100% 50%;
+    --graphite: 0 0% 6.7%;
+    --aluminium: 210 6% 78%;
+    --deep-black: 0 0% 2.7%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-wider;
+  }
+}
+
+@layer components {
+  .section-panel {
+    @apply bg-card border border-border p-8;
+  }
+
+  .data-label {
+    @apply font-heading text-xs uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .data-value {
+    @apply font-heading text-sm uppercase tracking-wider text-foreground;
+  }
+
+  .grid-line {
+    @apply border-t border-border;
+  }
+
+  .glow-cyan {
+    text-shadow: 0 0 20px hsl(var(--cyan) / 0.5);
+  }
+
+  .glow-blue {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(var(--cyan) / 0.03) 50%,
+      transparent 100%
+    );
+    animation: scan 8s linear infinite;
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes grid-draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* OUTER ROTATION */
+@keyframes orbit-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit-rotate {
+  animation: orbit-rotate 20s linear infinite;
+}
+
+/* INNER COUNTER ROTATION */
+@keyframes orbit-counter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.orbit-counter {
+  animation: orbit-counter 20s linear infinite;
+}
+
+
+.orbit-rotate {
+  animation: orbit-rotate 25s linear infinite;
+}
+
+.orbit-counter {
+  animation: orbit-counter 25s linear infinite;
+} 
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
