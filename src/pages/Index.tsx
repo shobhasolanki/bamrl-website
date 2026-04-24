@@ -10,8 +10,11 @@ import FutureSection from "@/components/FutureSection";
 import FloatingButton from "@/components/FloatingButton";
 import CertificationRoadmap from "@/components/CertificationRoadmap";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "BAMRL | Aerospace Engineering";
   }, []);
@@ -75,12 +78,12 @@ const Index = () => {
           <p className="text-gray-400 mb-6">
             Partner with us for advanced aerospace engineering solutions.
           </p>
-          <a
-            href="/collaboration"
-            className="inline-block px-6 py-3 border border-primary text-primary uppercase text-xs tracking-[0.2em] hover:bg-primary/10 transition"
-          >
-            Collaborate With Us →
-          </a>
+         <button
+  onClick={() => navigate("/collaboration")}
+  className="inline-block px-6 py-3 border border-primary text-primary uppercase text-xs tracking-[0.2em] hover:bg-primary/10 transition"
+>
+  Collaborate With Us →
+</button>
         </section>
 
         <FloatingButton />

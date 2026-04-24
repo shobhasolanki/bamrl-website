@@ -1,4 +1,5 @@
 import BamrlLogo from "@/assets/bamrl-logo.webp";
+import { useNavigate } from "react-router-dom";
 import {
   Facebook,
   Instagram,
@@ -7,6 +8,7 @@ import {
 } from "lucide-react";
 
 const FooterSection = () => {
+  const navigate = useNavigate();
   return (
     <footer className="relative border-t border-white/10 mt-16 text-white bg-transparent overflow-hidden">
 
@@ -39,15 +41,16 @@ const FooterSection = () => {
 
           <div className="flex flex-col gap-2 text-sm text-gray-400">
             {["Home","About","Services","Projects","Laboratory","Collaboration","Contact"].map((item,i)=>(
-              <a
-                key={i}
-                href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-                className="relative group hover:text-white transition"
-              >
+              <button
+  onClick={() => navigate(item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`)}
+  className="relative group hover:text-white transition text-left"
+>
+  
+
                 {item}
                 {/* futuristic underline */}
                 <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -122,13 +125,13 @@ const FooterSection = () => {
             </p>
           </div>
 
-          <a
-            href="/collaboration"
-            className="w-fit px-6 py-3 bg-primary text-black uppercase text-xs tracking-[0.2em] font-semibold 
-            hover:shadow-[0_0_25px_rgba(0,150,255,0.6)] transition"
-          >
-            Initiate Project →
-          </a>
+          <button
+  onClick={() => navigate("/collaboration")}
+  className="w-fit px-6 py-3 bg-primary text-black uppercase text-xs tracking-[0.2em] font-semibold 
+  hover:shadow-[0_0_25px_rgba(0,150,255,0.6)] transition"
+>
+  Initiate Project →
+</button>
         </div>
       </div>
 
