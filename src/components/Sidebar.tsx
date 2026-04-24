@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import bamrlLogo from "@/assets/bamrl-logo.png";
+import bamrlLogo from "@/assets/bamrl-logo.webp";
 
 type NavItem = {
   label: string;
@@ -21,11 +21,7 @@ const navItems: NavItem[] = [
   { label: "LABORATORY", path: "/laboratory", icon: "" },
   { label: "COLLABORATION", path: "/collaboration", icon: "" },
   { label: "CONTACT", path: "/contact", icon: "" },
-  { label: "ENGINEERING", path: "/#what-we-build", id: "what-we-build", icon: "" },
-  { label: "PROCESS", path: "/#process", id: "process", icon: "" },
-  { label: "RESEARCH", path: "/#research", id: "research", icon: "" },
-  { label: "TECHNOLOGY", path: "/#technology", id: "technology", icon: "" },
-  { label: "FUTURE", path: "/#future", id: "future", icon: "" },
+  
   
 ];
 
@@ -201,6 +197,15 @@ const Sidebar = ({ collapsed, toggleCollapse }: SidebarProps) => {
         )}
 
         <nav className="mt-6 space-y-1">{renderNavItems()}</nav>
+
+{/* Get a Quote button */}
+
+  <a href="/contact"
+  className="mt-4 w-full block text-center font-heading text-[10px] tracking-[0.15em] uppercase px-3 py-2 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-colors"
+>
+  GET A QUOTE →
+</a>
+
       </div>
 
       {/* Bottom section with status and graph box */}

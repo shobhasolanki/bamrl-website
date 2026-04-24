@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
-import BamrlLogo from "../assets/bamrl-logo.png";
+import BamrlLogo from "../assets/bamrl-logo.webp";
 
 // Collaboration sections data
 const collaborations = [

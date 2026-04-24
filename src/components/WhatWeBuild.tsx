@@ -5,20 +5,20 @@ import machinedImg from "@/assets/machined-part.jpg";
 
 const cards = [
   {
-    title: "AEROSPACE STRUCTURES",
-    description: "Lightweight aluminium aerospace structural systems engineered for maximum strength-to-weight ratio.",
+    title: "LIGHTER, STRONGER PARTS",
+    description: "We design aluminium aerospace structures that cut weight by up to 34% — without sacrificing strength. Perfect for drones, UAVs, and aircraft components.",
     image: optimizedImg,
     tag: "STRUCTURAL",
   },
   {
-    title: "STRUCTURAL SIMULATION",
-    description: "Engineering simulation and topology optimization using advanced finite element analysis.",
+    title: "SIMULATE BEFORE YOU BUILD",
+    description: "We stress-test your design digitally before a single part is machined. Catch failures early, save manufacturing cost, get it right the first time.",
     image: stressImg,
     tag: "SIMULATION",
   },
   {
-    title: "PROTOTYPE ENGINEERING",
-    description: "Development of precision-machined aerospace structural prototypes from concept to validation.",
+    title: "CAD TO PHYSICAL PROTOTYPE",
+    description: "We take your idea from a sketch to a certified physical prototype — CNC machined, validated, and ready for real-world aerospace testing.",
     image: machinedImg,
     tag: "PROTOTYPE",
   },

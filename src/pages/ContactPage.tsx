@@ -240,8 +240,8 @@ ${formData.details}
                 <a href="mailto:contact@bamrl.com" className="font-mono text-primary hover:underline hover:underline-offset-2 transition-all block group">
                   <span className="inline-flex items-center gap-2">✉️ contact@bamrl.com</span>
                 </a>
-                <a href="tel:+911234567890" className="font-mono text-primary hover:underline hover:underline-offset-2 transition-all block group">
-                  <span className="inline-flex items-center gap-2">📞 +91 12345 67890</span>
+                <a href="tel:+918421306939" className="font-mono text-primary hover:underline hover:underline-offset-2 transition-all block group">
+                  <span className="inline-flex items-center gap-2">📞 +918421306939</span>
                 </a>
               </div>
             </div>

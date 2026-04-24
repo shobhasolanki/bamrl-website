@@ -1,4 +1,4 @@
-import BamrlLogo from "@/assets/bamrl-logo.png";
+import BamrlLogo from "@/assets/bamrl-logo.webp";
 import {
   Facebook,
   Instagram,
