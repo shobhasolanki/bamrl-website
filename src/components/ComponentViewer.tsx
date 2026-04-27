@@ -105,23 +105,7 @@ const ComponentViewer = () => {
             </p>
           </div>
         </div>
-      {/* Story CTA */}
-        <div className="px-4 sm:px-8 md:px-12 mt-6 max-w-5xl mx-auto">
-          <div className="border border-cyan-400/30 bg-cyan-400/5 px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <p className="font-heading text-xs tracking-widest text-cyan-400 uppercase">Want this for your project?</p>
-              <p className="text-xs text-muted-foreground mt-1 font-body">We can optimise your component the same way — lighter, stronger, certified.</p>
-            </div>
-            <a
-              href="https://wa.me/918421306939?text=Hello%20BAMRL%2C%20I%20want%20to%20discuss%20component%20optimisation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-heading text-[10px] tracking-[0.15em] uppercase px-4 py-2 border border-green-500 text-green-400 hover:bg-green-500 hover:text-black transition-colors whitespace-nowrap"
-            >
-              💬 DISCUSS MY PROJECT
-            </a>
-          </div>
-        </div>
+      
       </div>
     </section>
   );

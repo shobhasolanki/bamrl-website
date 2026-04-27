@@ -78,21 +78,7 @@ const HeroSection = () => {
           </p>
 
            
-{/* Stat badges */}
-<div className="flex flex-wrap justify-center gap-3 mt-6 mb-2">
-  {[
-    "12+ Projects Delivered",
-    "34% Avg Weight Reduction",
-    "Kharadi, Pune · Est. 2024",
-  ].map((stat) => (
-    <span
-      key={stat}
-      className="text-[10px] tracking-widest uppercase px-3 py-1 border border-cyan-400/60 text-white font-bold drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)] bg-black/40"
-    >
-      {stat}
-    </span>
-  ))}
-</div>
+
 
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
@@ -102,15 +88,14 @@ const HeroSection = () => {
             >
               EXPLORE ENGINEERING
             </button>
-          <a
           
-            href="https://wa.me/918421306939?text=Hello%20BAMRL%2C%20I%20want%20to%20discuss%20a%20project"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="font-heading text-[10px] sm:text-xs tracking-[0.15em] uppercase px-4 sm:px-6 py-3 border border-green-500 text-green-400 hover:bg-green-500 hover:text-black transition-colors flex items-center justify-center gap-2"
+          
+          <button
+  className="font-heading text-[10px] sm:text-xs tracking-[0.15em] uppercase px-4 sm:px-6 py-3 border border-border text-foreground hover:border-foreground transition-colors"
+  onClick={() => document.getElementById("research")?.scrollIntoView({ behavior: "auto" })}
 >
-  💬 CHAT ON WHATSAPP
-</a>
+  VIEW RESEARCH
+</button>
           </div>
         </motion.div>
 
