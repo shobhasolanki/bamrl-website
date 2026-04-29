@@ -69,16 +69,38 @@ const ServiceDetail = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log("Form submitted:", formData);
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: "", email: "", requirement: "" });
-  };
+  const phoneNumber = "918421306939";
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!formData.name || !formData.email || !formData.requirement) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  const message = `New Service Inquiry – ${service.title}
+
+Name: ${formData.name}
+Email: ${formData.email}
+Requirement: ${formData.requirement}
+`;
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  await new Promise(resolve => setTimeout(resolve, 800));
+
+  setIsSubmitting(false);
+  setSubmitted(true);
+
+  window.open(whatsappURL, "_blank");
+
+  setFormData({ name: "", email: "", requirement: "" });
+
+  setTimeout(() => setSubmitted(false), 5000);
+};
 
   // Process steps with connector lines
   const steps = [
@@ -249,7 +271,7 @@ const ServiceDetail = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="py-20 px-6 md:px-20 max-w-7xl mx-auto"
         >
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto px-2 sm:px-0">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
               Start Your Project With Us
             </h2>
@@ -310,7 +332,7 @@ const ServiceDetail = () => {
                       Submitting...
                     </>
                   ) : (
-                    "Submit Inquiry →"
+                    "Send Inquiry on WhatsApp →"
                   )}
                 </span>
               </motion.button>

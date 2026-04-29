@@ -25,7 +25,7 @@ const FooterSection = () => {
 
         {/* BRAND */}
         <div>
-          <img src={BamrlLogo} className="w-24 h-24 mb-3" />
+          <img src={BamrlLogo} className="w-32 h-32 mb-3" />
           <p className="text-gray-400 text-sm leading-relaxed">
             Advancing aluminium aerospace engineering through precision,
             innovation, and performance. Building next-gen structural systems
@@ -64,7 +64,7 @@ const FooterSection = () => {
           <div className="text-gray-400 text-sm space-y-2">
             <p>📍 Pune, Maharashtra, India</p>
             <p>📧 contact@bamrl.com</p>
-            <p>📞 +91 98XXXXXXXX</p>
+            <p>📞 +918421306939 </p>
           </div>
 
           {/* 🔥 SOCIAL ICONS – FIXED */}

@@ -111,18 +111,22 @@ const Sidebar = ({ collapsed, toggleCollapse }: SidebarProps) => {
       <button
         key={item.path}
         onClick={() => handleNavigation(item)}
-        className={`w-full flex items-center gap-3 px-2 py-2 rounded-md transition-all duration-200 ${
+        title={collapsed ? item.label : ""}
+        className={`w-full flex items-center gap-3 px-2 py-3 rounded-md transition-all duration-200 ${
           isActive(item)
             ? "text-primary bg-primary/10 border-l-2 border-primary"
             : "text-muted-foreground hover:text-foreground hover:bg-white/5"
         } ${collapsed ? "justify-center" : "justify-start"}`}
       >
-        <span className="text-lg">{item.icon}</span>
-        {!collapsed && (
-          <span className="font-heading text-[11px] tracking-[0.15em]">
-            {item.label}
-          </span>
-        )}
+        {collapsed ? (
+  <span className="text-[10px] font-bold tracking-wider text-white/70">
+    {item.label.charAt(0)}
+  </span>
+) : (
+  <span className="font-heading text-[11px] tracking-[0.15em]">
+    {item.label}
+  </span>
+)}
       </button>
     ));
 
@@ -132,7 +136,7 @@ const Sidebar = ({ collapsed, toggleCollapse }: SidebarProps) => {
       <>
         <header className="fixed top-0 left-0 right-0 h-20 bg-card border-b border-border z-50 flex items-center justify-between px-4">
           <div>
-            <img src={bamrlLogo} alt="BAMRL Logo" className="h-16 w-auto object-contain" />
+            <img src={bamrlLogo} alt="BAMRL Logo" className="h-20 w-auto object-contain" />
           </div>
           <button onClick={() => setMenuOpen(!menuOpen)} className="text-foreground p-2">
             {menuOpen ? <X size={28} /> : <Menu size={28} />}

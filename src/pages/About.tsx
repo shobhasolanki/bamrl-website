@@ -14,18 +14,48 @@ const About = () => {
     email: "",
     phone: "",
     projectDetails: "",
+    
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Lead form submitted:", formData);
-    alert("Thank you! Our team will contact you within 24 hours.");
-    setFormData({ name: "", email: "", phone: "", projectDetails: "" });
-  };
+  
+
+const phoneNumber = "918421306939";
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // ✅ Build clean plain-text message
+  const message = `New Inquiry from Website:
+  
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Project Details: ${formData.projectDetails}
+`;
+
+  // ✅ Encode message
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  // ✅ Show confirmation
+  alert("Thank you! Our team will contact you within 24 hours.");
+
+  // ✅ Open WhatsApp AFTER submit
+  window.open(whatsappURL, "_blank");
+
+  // ✅ Reset form
+  setFormData({
+    name: "",
+    email: "",
+    phone: "",
+    projectDetails: "",
+    
+  });
+};
+
 
   // NEW: scroll to lead form function
   const scrollToForm = () => {
@@ -305,7 +335,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-wide">Company Overview</h2>
             <div className="w-16 h-[2px] bg-primary mb-6" />
             <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
-              BAMRL Pvt Ltd is an emerging aerospace engineering company focused on the design, validation, and manufacturing of aluminium structural components. We deliver precision-engineered solutions that meet modern aerospace standards.
+              <span className="font-semibold text-white">BAMRL Pvt Ltd</span> is an emerging aerospace engineering company focused on the design, validation, and manufacturing of aluminium structural components. We deliver precision-engineered solutions that meet modern aerospace standards.
             </p>
             <ul className="mt-6 space-y-3 text-gray-300">
               <li>✔ Precision in Every Micron – 100% accuracy</li>
@@ -401,9 +431,19 @@ const About = () => {
           <h2 className="text-3xl font-bold text-center mb-12 uppercase tracking-wider">Leadership</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
-              { name: "Anil Ramji Pawar", role: "Managing Director", desc: "15+ years experience in aluminium fabrication." },
-              { name: "Mohammed Fahim Khan", role: "Director – Technical Operations", desc: "Expert in operational excellence and aerospace validation." },
-            ].map((person, i) => (
+  { 
+    name: "Anil Ramji Pawar", 
+    role: "Managing Director", 
+    desc: "At BAMRL, we believe that the strength of a nation’s defense lies in the integrity of its materials. We founded BAMRL to break the testing bottleneck in India’s aerospace supply chain, ensuring faster, more reliable validation systems with precision engineering." 
+  },
+  { 
+    name: "Mohammed Fahim Khan", 
+    role: "Director – Technical Operations & Strategy", 
+    desc: "Architect of our Rapid Response model, focused on reducing material certification lead times to 48 hours. Driving advanced data-driven reporting systems while ensuring operational efficiency and lean laboratory management." 
+  },
+]
+
+.map((person, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.04 }}
@@ -414,7 +454,9 @@ const About = () => {
                   <h3 className="text-xl md:text-2xl font-semibold text-white">{person.name}</h3>
                   <p className="text-primary text-sm mt-1 font-mono tracking-wide">{person.role}</p>
                   <div className="w-10 h-[2px] bg-primary mt-3 mb-4" />
-                  <p className="text-gray-400 text-sm leading-relaxed">{person.desc}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed italic">
+  “{person.desc}”
+</p>
                 </div>
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-primary/50 transition duration-300" />
               </motion.div>

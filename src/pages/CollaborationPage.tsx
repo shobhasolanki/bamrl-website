@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import BamrlLogo from "../assets/bamrl-logo.webp";
 
 // Collaboration sections data
@@ -63,6 +63,80 @@ const collegeCollaborations = [
   "Anna University",
   "NIT Karnataka",
 ];
+
+// Detailed info for each academic partnership (used in modal)
+const collegeDetailsMap = {
+  "College of Engineering Pune (COEP)": {
+    name: "College of Engineering Pune (COEP)",
+    project: "Al-Li Alloy Formability Study for Airframe Components",
+    type: "Research & Lab Testing",
+    duration: "12 months (Ongoing)",
+    desc: "Joint investigation into formability limits of advanced aluminium-lithium alloys using hydraulic bulge tests and FEA correlation."
+  },
+  "MIT World Peace University, Pune": {
+    name: "MIT World Peace University, Pune",
+    project: "UAV Wing Skin Optimisation",
+    type: "Simulation + Prototype",
+    duration: "8 months",
+    desc: "Design, topological optimisation and manufacturing of a lightweight UAV wing skin using 7075-T6 aluminium."
+  },
+  "VIT Vellore": {
+    name: "VIT Vellore",
+    project: "Friction Stir Welding of Dissimilar Al Alloys",
+    type: "Metallurgical Research",
+    duration: "10 months",
+    desc: "Experimental characterisation of FSW joints between AA6061 and AA7075 for aerospace structural applications."
+  },
+  "SRM Institute of Science and Technology": {
+    name: "SRM Institute of Science and Technology",
+    project: "Heat Exchanger Fin Optimisation",
+    type: "CFD + Thermal Simulation",
+    duration: "6 months",
+    desc: "Numerical and experimental analysis of louvered fin geometries for compact heat exchangers."
+  },
+  "RV College of Engineering, Bangalore": {
+    name: "RV College of Engineering, Bangalore",
+    project: "Additive Manufacturing of Aluminium Alloys",
+    type: "Research & Development",
+    duration: "14 months",
+    desc: "Development of processing parameters for LPBF of Scalmalloy and subsequent mechanical testing."
+  },
+  "IIIT Bangalore": {
+    name: "IIIT Bangalore",
+    project: "AI-Driven Defect Detection in Aerospace Castings",
+    type: "Machine Learning + NDT",
+    duration: "9 months",
+    desc: "Computer vision system to automatically detect porosity and cracks in aluminium castings."
+  },
+  "PICT Pune": {
+    name: "PICT Pune",
+    project: "Riveted Joint Fatigue Analysis",
+    type: "FEA + Experimental",
+    duration: "6 months",
+    desc: "Finite element modelling of riveted lap joints under cyclic loading, validated by fatigue tests."
+  },
+  "DY Patil College of Engineering": {
+    name: "DY Patil College of Engineering",
+    project: "Landing Gear Bracket Topology Optimisation",
+    type: "Design Optimisation",
+    duration: "7 months",
+    desc: "Mass reduction of an aluminium landing gear bracket using generative design and selective laser melting."
+  },
+  "Anna University": {
+    name: "Anna University",
+    project: "Corrosion Behaviour of Clad Aluminium Sheets",
+    type: "Electrochemical Testing",
+    duration: "12 months",
+    desc: "Long-term atmospheric and accelerated corrosion study of clad 2024-T3 aluminium."
+  },
+  "NIT Karnataka": {
+    name: "NIT Karnataka",
+    project: "High-Strain Rate Behaviour of Al-Mg-Sc Alloys",
+    type: "Dynamic Testing",
+    duration: "8 months",
+    desc: "Split Hopkinson pressure bar tests to characterise strain rate sensitivity for impact applications."
+  }
+};
 
 // 🧪 Active Project Collaborations
 const projectCollaborations = [
@@ -206,6 +280,8 @@ export default function CollaborationPage() {
   useEffect(() => {
     document.title = "BAMRL | Collaborate";
   }, []);
+
+  const [selectedCollege, setSelectedCollege] = useState(null);
 
   return (
     <div className="relative h-auto bg-black overflow-x-hidden">
@@ -418,14 +494,18 @@ export default function CollaborationPage() {
               {[...collegeCollaborations, ...collegeCollaborations].map(
                 (college, idx) => (
                   <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="group min-w-[240px] max-w-[260px] px-5 py-4 text-center border border-white/10 rounded-xl bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_-5px_rgba(0,150,255,0.4)] cursor-pointer"
-                  >
-                    <p className="text-sm md:text-base font-medium tracking-wide text-gray-200 group-hover:text-white transition break-words leading-snug">
-                      {college}
-                    </p>
-                  </motion.div>
+  key={idx}
+  onClick={() => {
+    const details = collegeDetailsMap[college];
+    if (details) setSelectedCollege(details);
+  }}
+  whileHover={{ scale: 1.05, y: -5 }}
+  className="group min-w-[240px] max-w-[260px] px-5 py-4 text-center border border-white/10 rounded-xl bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_-5px_rgba(0,150,255,0.4)] cursor-pointer"
+>
+  <p className="text-sm md:text-base font-medium tracking-wide text-gray-200 group-hover:text-white transition break-words leading-snug">
+    {college}
+  </p>
+</motion.div>
                 )
               )}
             </div>
@@ -595,6 +675,79 @@ export default function CollaborationPage() {
             strict confidentiality and professional engineering ethics.
           </p>
         </motion.div>
+
+{/* Modal for Academic Partnership Details (only from scrolling marquee) */}
+{selectedCollege && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md" onClick={() => setSelectedCollege(null)}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ type: "spring", damping: 20, stiffness: 300 }}
+      className="relative max-w-lg w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-white/20 rounded-2xl shadow-2xl shadow-primary/20 p-6 md:p-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close button */}
+      <button
+        onClick={() => setSelectedCollege(null)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+        aria-label="Close modal"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      {/* College Name */}
+      <h3 className="text-2xl md:text-3xl font-bold text-white pr-8 mb-4">
+        {selectedCollege.name}
+      </h3>
+
+      {/* Project Title */}
+      <div className="mb-3">
+        <span className="text-primary text-xs uppercase tracking-wider font-mono">Project</span>
+        <p className="text-gray-200 text-lg font-semibold mt-1">{selectedCollege.project}</p>
+      </div>
+
+      {/* Type & Duration side by side */}
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <span className="text-primary text-xs uppercase tracking-wider font-mono">Type</span>
+          <p className="text-gray-300 text-sm mt-1">{selectedCollege.type}</p>
+        </div>
+        <div>
+          <span className="text-primary text-xs uppercase tracking-wider font-mono">Duration</span>
+          <p className="text-gray-300 text-sm mt-1">{selectedCollege.duration}</p>
+        </div>
+      </div>
+
+      {/* Description */}
+      <div>
+        <span className="text-primary text-xs uppercase tracking-wider font-mono">Description</span>
+        <p className="text-gray-300 text-sm leading-relaxed mt-2">
+          {selectedCollege.desc}
+        </p>
+      </div>
+{/* CTA + Accent */}
+<div className="mt-6 pt-4 border-t border-white/10 text-center space-y-3">
+  
+  <button
+    onClick={() => window.open('/contact', '_self')}
+    className="w-full md:w-auto px-6 py-3 border border-primary text-primary text-xs uppercase tracking-[0.2em] font-semibold rounded-sm hover:bg-primary/10 transition-all duration-300"
+  >
+    Start Collaboration →
+  </button>
+
+  <p className="text-gray-500 text-xs">
+    BAMRL Academic Collaboration
+  </p>
+
+</div>
+    </motion.div>
+  </div>
+)}
+
+
       </div>
     </div>
   );
