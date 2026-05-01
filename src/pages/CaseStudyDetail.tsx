@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import uavWing from "@/assets/uav-wing-cad.png";
 import uavFea from "@/assets/uav-wing-fea.jpg";
-import bracketOpt from "@/assets/bracket-optimized.jpg";
+import bracketOpt from "@/assets/bracket-optimized.jpeg";
 import bracketOriginal from "@/assets/bracket-original.png";
 import uav1 from "@/assets/projects/uav-1.png";
 import uav2 from "@/assets/projects/uav-2.jpg";

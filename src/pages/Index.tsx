@@ -9,6 +9,7 @@ import TechnologySection from "@/components/TechnologySection";
 import FutureSection from "@/components/FutureSection";
 import FloatingButton from "@/components/FloatingButton";
 import CertificationRoadmap from "@/components/CertificationRoadmap";
+import PremiumShowcase from "@/components/PremiumShowcase";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -63,6 +64,7 @@ const Index = () => {
       <div className="relative z-10">
         <HeroSection />
         <ComponentViewer />
+        <PremiumShowcase />
         <WhatWeBuild />
         <ProcessSection />
         <OptimizationSection />

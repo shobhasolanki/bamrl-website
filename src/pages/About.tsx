@@ -163,7 +163,16 @@ Project Details: ${formData.projectDetails}
       <div className="relative z-10">
         {/* 🔥 HERO SECTION (unchanged except button onClick) */}
         <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
-          <img src={lab1} className="absolute w-full h-full object-cover opacity-30" alt="lab background" />
+          <video
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="absolute w-full h-full object-cover"
+>
+  <source src="/videos/about-hero.mp4" type="video/mp4" />
+</video>
+<div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 px-4">
             <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
@@ -176,26 +185,8 @@ Project Details: ${formData.projectDetails}
               Precision. Innovation. Performance.
             </p>
 
-            {/* CHANGED: Buttons with onClick scroll */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button
-                onClick={scrollToForm}
-                className="px-6 py-3 bg-primary hover:bg-primary/80 text-black font-semibold rounded-md transition-all duration-300 shadow-lg shadow-primary/20"
-              >
-                Request a Quote
-              </button>
-              <button
-                onClick={scrollToForm}
-                className="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-md transition-all duration-300"
-              >
-                Submit Your Project
-              </button>
-            </div>
-            <div className="mt-6 inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary/30">
-              <span className="text-primary font-mono text-sm tracking-wide">
-                ⚡ 48-Hour Turnaround for Testing & Certification
-              </span>
-            </div>
+           
+            
           </motion.div>
         </section>
 
@@ -309,12 +300,26 @@ Project Details: ${formData.projectDetails}
 
         {/* Parallax image section (unchanged) */}
         <section className="relative h-[70vh] overflow-hidden">
-          <motion.div style={{ y }} initial={{ scale: 1.2 }} whileInView={{ scale: 1 }} transition={{ duration: 1.5 }} className="absolute inset-0">
-            <img src={aero} className="w-full h-full object-cover scale-110 opacity-50" alt="lab" />
-          </motion.div>
-          <div className="absolute inset-0 bg-black/60" />
+          <motion.div 
+  style={{ y }} 
+  initial={{ scale: 1.2 }} 
+  whileInView={{ scale: 1 }} 
+  transition={{ duration: 1.5 }} 
+  className="absolute inset-0"
+>
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="w-full h-full object-cover"
+  >
+    <source src="/videos/precision.mp4" type="video/mp4" />
+  </video>
+</motion.div>
+          <div className="absolute inset-0 bg-black/70" />
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-[0.2em] text-white">PRECISION ENGINEERED</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide text-white">PRECISION ENGINEERED</h2>
             <div className="w-20 h-[2px] bg-primary mt-4 mb-6 mx-auto" />
             <p className="text-gray-300 max-w-2xl text-sm md:text-base leading-relaxed">
               Delivering aerospace-grade aluminium structures with unmatched precision, speed, and reliability—engineered for next-generation performance.

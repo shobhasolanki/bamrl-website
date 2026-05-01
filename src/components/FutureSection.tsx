@@ -21,15 +21,26 @@ const FutureSection = () => {
         </p>
 
         <div className="section-panel overflow-hidden mb-8 sm:mb-10">
-          <motion.img
-            src={futureImg}
-            alt="Future aerospace concept"
-            className="w-full h-[200px] sm:h-[280px] md:h-[350px] object-cover"
-            initial={{ scale: 1.1 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          />
+          <motion.div
+  className="relative w-full h-[200px] sm:h-[280px] md:h-[350px] overflow-hidden"
+  initial={{ scale: 1.1 }}
+  whileInView={{ scale: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 1 }}
+>
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="w-full h-full object-cover"
+  >
+    <source src="/videos/future.mp4" type="video/mp4" />
+  </video>
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50" />
+</motion.div>
         </div>
 
         {/* Timeline */}

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import uavWing from "@/assets/uav-wing-cad.png";
-import uavFea from "@/assets/uav-wing-fea.jpg";
+import uavFea from "@/assets/uav-wing-fea.png";
 import { useNavigate } from "react-router-dom";
-import bracketOpt from "@/assets/bracket-optimized.jpg";
+import bracketOpt from "@/assets/bracket-optimized.jpeg";
 import bracketOriginal from "@/assets/bracket-original.png";
 
 // Project data
